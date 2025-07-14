@@ -1,7 +1,6 @@
 import type { DefaultTheme, LocaleConfig } from "vitepress";
 import type { CustomConfig, Theme } from "../theme/types";
 import { sections } from "../theme/plugins/section";
-import "dotenv/config";
 import { resolveBaseUrl } from "../theme/utils";
 
 export const SITE_NAME = "Kotatsu Website";
