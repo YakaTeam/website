@@ -2,7 +2,7 @@
 import { useWindowScroll } from "@vueuse/core";
 import { computed } from "vue";
 import { useData, inBrowser } from "vitepress";
-import { useSidebar } from "vitepress/dist/client/theme-default/composables/sidebar";
+import { useSidebar } from "vitepress/theme";
 import VPNavBarTitle from "vitepress/dist/client/theme-default/components/VPNavBarTitle.vue";
 import VPNavBarSearch from "vitepress/dist/client/theme-default/components/VPNavBarSearch.vue";
 import VPNavBarMenu from "vitepress/dist/client/theme-default/components/VPNavBarMenu.vue";

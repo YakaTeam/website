@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { useData } from "vitepress";
+// @ts-expect-error Missing types
 import { useLangs } from "vitepress/dist/client/theme-default/composables/langs";
 
 import Button from "./Button.vue";

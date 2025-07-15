@@ -1,5 +1,5 @@
 import translators from "./translators.json";
-import type { Theme } from "../.vitepress/theme/types";
+import type { Theme } from "@/theme/types";
 
 export interface Translator {
   name: string | Record<string, string>;

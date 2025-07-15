@@ -5,6 +5,7 @@ withDefaults(
   defineProps<{
     height?: string;
     fill?: string;
+    width?: string; // Not in use, do not remove, or a Vue error will occur
   }>(),
   defaultAttributes,
 );

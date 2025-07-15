@@ -2,7 +2,8 @@
 import { useScrollLock } from "@vueuse/core";
 import { ref, watch, computed } from "vue";
 import { type DefaultTheme, useRoute, useData, inBrowser } from "vitepress";
-import { useSidebar } from "vitepress/dist/client/theme-default/composables/sidebar";
+import { useSidebar } from "vitepress/theme";
+
 import VPSidebarItem from "vitepress/dist/client/theme-default/components/VPSidebarItem.vue";
 
 const { sidebar: flatSidebar, sidebarGroups, hasSidebar } = useSidebar();

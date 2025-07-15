@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from "vue";
+// @ts-expect-error Missing types
 import { normalizeLink } from "vitepress/dist/client/theme-default/support/utils";
+// @ts-expect-error Missing types
 import { EXTERNAL_URL_RE } from "vitepress/dist/client/shared";
 
 const {

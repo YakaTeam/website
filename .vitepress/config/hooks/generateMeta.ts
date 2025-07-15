@@ -15,7 +15,9 @@ function generateMeta(context: TransformContext, hostname: string) {
   head.push(["meta", { name: "twitter:url", content: url }]);
   head.push(["meta", { name: "twitter:card", content: "summary_large_image" }]);
 
-  if (pageData.frontmatter.theme) head.push(["meta", { name: "theme-color", content: pageData.frontmatter.theme }]);
+  if (pageData.frontmatter.theme) {
+    head.push(["meta", { name: "theme-color", content: pageData.frontmatter.theme }]);
+  }
 
   head.push(["meta", { property: "og:type", content: pageData.frontmatter.type ?? "website" }]);
 

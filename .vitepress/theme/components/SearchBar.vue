@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, useId } from "vue";
 import { useData } from "vitepress";
+// @ts-expect-error Missing types
 import { createTranslate } from "vitepress/dist/client/theme-default/support/translation";
 import { MagnifyingGlass, ArrowLeft, X } from "../icons";
 
@@ -39,7 +40,6 @@ function onSearchBarClick(event: PointerEvent) {
     <form class="search-bar" @pointerup="onSearchBarClick($event)" @submit.prevent="">
       <label :title="placeholder" id="localsearch-label" :for="id"> <MagnifyingGlass width="18px" height="18[x" />q </label>
       <div v-if="backButton" class="search-actions before">
-        SOme
         <button class="back-button" :title="$t('modal.backButtonTitle')" @click="$emit('close')">
           <ArrowLeft width="18" height="18" />
         </button>
