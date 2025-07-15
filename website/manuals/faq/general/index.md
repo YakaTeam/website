@@ -28,8 +28,8 @@ To report **Kotatsu** copycats on the **Google Play Store**, fill out [this form
 
 :::details Steps to report Kotatsu copycats
 
-1.  Go to the page -> three dots menu -> Flag as inappropriate -> Other objection.
-1.  After choosing "Other objection", you may choose to put down any or all of the following:
+1. Go to the page -> three dots menu -> Flag as inappropriate -> Other objection.
+1. After choosing "Other objection", you may choose to put down any or all of the following:
 
         The app infringes on the Google Play Developer Policy by
 

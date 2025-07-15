@@ -14,10 +14,10 @@ Add it to your root `build.gradle` at the end of repositories:
 
 ```groovy{4}
 allprojects {
-	repositories {
-		...
-		maven { url 'https://jitpack.io' }  // [!code focus]
-	}
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }  // [!code focus]
+    }
 }
 ```
 

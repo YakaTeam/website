@@ -20,7 +20,7 @@ Some **DO**s and **DO NOT**s for [FAQ](/manuals/faq/general/).
 
 - **DO** write each segment as a question:
 
-  > #### How can I see how many chapters I've downloaded?
+  > How can I see how many chapters I've downloaded?
 
 - **DO** write your instructions as clear as possible, preferably check with other people first and see if they can help you improve your language used.
 

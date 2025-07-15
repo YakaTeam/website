@@ -14,10 +14,14 @@ This function is experimental. Please make sure you have a backup to avoid data 
 
 List of official servers:
 
-| Domain           | Location    | Status                                             |
-| ---------------- | ----------- | -------------------------------------------------- |
-| sync.kotatsu.app | Belarus     | ![](https://status.kotatsu.app/api/badge/1/status) |
-| moe.shirizu.org  | Netherlands | ![](https://status.kotatsu.app/api/badge/7/status) |
+<!-- markdownlint-disable MD045 -->
+
+| Domain           | Location    | Status                                                   |
+| ---------------- | ----------- | -------------------------------------------------------- |
+| sync.kotatsu.app | Belarus     | ![Status](https://status.kotatsu.app/api/badge/1/status) |
+| moe.shirizu.org  | Netherlands | ![](https://status.kotatsu.app/api/badge/7/status)       |
+
+<!-- markdownlint-restore -->
 
 ## What is synchronization?
 
