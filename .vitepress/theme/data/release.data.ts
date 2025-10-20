@@ -2,10 +2,12 @@ import { defineLoader } from "vitepress";
 import { Octokit } from "@octokit/rest";
 import type { GetResponseDataTypeFromEndpointMethod } from "@octokit/types";
 import fs from "node:fs";
+import { CACHE_DIR } from ".";
+import { join } from "node:path";
 
 const isDev = process.env.NODE_ENV === "development";
 
-const CACHE_PATH = "./release.data.json";
+const CACHE_PATH = join(CACHE_DIR, "release.data.json");
 
 const octokit = new Octokit();
 
@@ -27,20 +29,22 @@ export default defineLoader({
       return cachedData;
     }
 
-    const { data: stable } = await octokit.repos.getLatestRelease({
-      owner: "KotatsuApp",
-      repo: "Kotatsu",
-    });
+    const [stable, nightly] = await Promise.all([
+      octokit.repos.getLatestRelease({
+        owner: "KotatsuApp",
+        repo: "Kotatsu",
+      }),
+      octokit.repos.getLatestRelease({
+        owner: "KotatsuApp",
+        repo: "Kotatsu-nightly",
+      }),
+    ]);
 
-    const { data: nightly } = await octokit.repos.getLatestRelease({
-      owner: "KotatsuApp",
-      repo: "Kotatsu-nightly",
-    });
-
-    const releaseData = { stable, nightly };
+    const releaseData = { stable: stable.data, nightly: nightly.data };
 
     if (isDev) {
       console.log("Creating release cache");
+      fs.mkdirSync(CACHE_DIR, { recursive: true });
       fs.writeFileSync(CACHE_PATH, JSON.stringify(releaseData, null, 2), "utf-8");
     }
 
