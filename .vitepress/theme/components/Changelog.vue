@@ -22,7 +22,7 @@ const changelog = computed(() => {
     <header class="changelog__header">
       <h2 class="changelog__title">Changelog</h2>
     </header>
-    <article class="changelog__content" v-html="changelog" />
+    <article class="changelog__content" v-html="changelog"></article>
   </section>
   <footer class="full-changelog">
     <p>

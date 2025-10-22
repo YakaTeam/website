@@ -3,7 +3,7 @@ import VPIconLanguages from "vitepress/dist/client/theme-default/components/icon
 import VPFlyout from "vitepress/dist/client/theme-default/components/VPFlyout.vue";
 import VPMenuLink from "vitepress/dist/client/theme-default/components/VPMenuLink.vue";
 import { useData } from "vitepress";
-import { useLangs } from "../composables/langs";
+import { useLangs } from "../composables/useLangs";
 
 const { theme } = useData();
 const { localeLinks, currentLang } = useLangs({ correspondingLink: true });

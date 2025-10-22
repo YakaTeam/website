@@ -13,7 +13,7 @@ defineProps<{
   <div class="Feature">
     <div class="box">
       <h1 v-if="title" class="title">
-        <span v-html="title" class="clip"></span>
+        <span class="clip" v-html="title"></span>
       </h1>
       <div v-if="details" class="details">
         <p v-html="details"></p>

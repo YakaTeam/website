@@ -6,9 +6,10 @@ import { useData } from "vitepress";
 import { isActive } from "vitepress/dist/client/shared";
 // @ts-expect-error Missing types
 import { getFlatSideBarLinks } from "vitepress/dist/client/theme-default/support/sidebar";
+import { ThemeConfig } from "../types";
 
 interface Data {
-  theme: Ref<any>;
+  theme: Ref<ThemeConfig>;
   page: Ref<DocsPageData>;
   frontmatter: Ref<DocsPageData["frontmatter"]>;
 }

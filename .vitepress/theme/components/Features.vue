@@ -16,7 +16,7 @@ const { features } = defineProps<{
   features: IFeature[];
 }>();
 
-const grid = computed(() => {
+const grid = computed((): string => {
   const length = features.length;
 
   if (length === 0) return;
@@ -24,6 +24,7 @@ const grid = computed(() => {
   if (length === 3) return "grid-3";
   if (length % 3 === 0) return "grid-6";
   if (length > 3) return "grid-4";
+  return "";
 });
 </script>
 

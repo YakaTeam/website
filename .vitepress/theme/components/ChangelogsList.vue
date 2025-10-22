@@ -11,7 +11,7 @@ function renderMarkdown(string: string | null | undefined) {
     .replace(/(?<=\(|(, ))@(.*?)(?=\)|(, ))/g, "[@$2](https://github.com/$2)")
     .replace(/#(\d+)/g, "[#$1](https://github.com/KotatsuApp/Kotatsu/issues/$1)")
     .replace(/^Check out the .*past release notes.* if you're.*$/m, "")
-    .replace(/https\:\/\/github.com\/KotatsuApp\/Kotatsu\/releases\/tag\/(.*?)/g, "#$1")
+    .replace(/https:\/\/github.com\/KotatsuApp\/Kotatsu\/releases\/tag\/(.*?)/g, "#$1")
     .replace(/## [ \t]*([^\n\r]*)/g, "### $1")
     .trim();
 
@@ -24,8 +24,8 @@ const dateFormatter = new Intl.DateTimeFormat("en", {
 </script>
 
 <template>
-  <div class="release" v-for="(release, index) of changelogs" :key="release.id">
-    <h2 class="release__title" :id="index === 0 ? 'latest' : release.tag_name">
+  <div v-for="(release, index) of changelogs" :key="release.id" class="release">
+    <h2 :id="index === 0 ? 'latest' : release.tag_name" class="release__title">
       <a :href="release.html_url" target="_blank">
         {{ release.tag_name.replace("v", "") }}
       </a>

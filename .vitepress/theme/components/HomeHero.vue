@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { DefaultTheme } from "vitepress/theme";
 import VPImage from "vitepress/dist/client/theme-default/components/VPImage.vue";
-import Button from "./Button.vue";
+import BaseButton from "./BaseButton.vue";
 import { type Ref, inject } from "vue";
 
 interface HeroAction {
@@ -31,16 +31,16 @@ const heroImageSlotExists = inject("hero-image-slot-exists") as Ref<boolean>;
       <div class="main">
         <slot name="home-hero-info">
           <h1 v-if="data.title" class="title">
-            <span v-html="data.title" class="clip"></span>
+            <span class="clip" v-html="data.title"></span>
           </h1>
           <h2 v-if="data.text" class="text">
-            <span v-html="data.text" class="clip"></span>
+            <span class="clip" v-html="data.text"></span>
           </h2>
-          <p v-if="data.tagline" v-html="data.tagline" class="description"></p>
+          <p v-if="data.tagline" class="description" v-html="data.tagline"></p>
         </slot>
         <div v-if="data.actions" class="actions">
           <p v-for="action in data.actions" :key="action.link" class="action">
-            <Button tag="a" :theme="action.theme" :text="action.text" :href="action.link" />
+            <BaseButton tag="a" :theme="action.theme" :text="action.text" :href="action.link" />
           </p>
         </div>
       </div>

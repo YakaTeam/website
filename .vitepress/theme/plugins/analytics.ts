@@ -15,7 +15,7 @@ function mountGoogleAnalytics(id: string) {
     window.dataLayer = window.dataLayer || [];
     const gtag = (...args: unknown[]) => {
       // @ts-expect-error Missing types
-      // eslint-disable-next-line prefer-rest-params
+       
       window.dataLayer.push(args);
     };
 

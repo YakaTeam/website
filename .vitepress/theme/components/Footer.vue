@@ -2,7 +2,7 @@
 import { useQRCode } from "@vueuse/integrations/useQRCode";
 import { useData, withBase } from "vitepress";
 import { socialList } from "../utils";
-import Link from "./Link.vue";
+import Link from "./BaseLink.vue";
 import GPL from "../icons/GPL.vue";
 
 const { theme, frontmatter } = useData();
@@ -10,14 +10,14 @@ const qrcode = useQRCode(theme.value.footer.qrcodeLink);
 </script>
 
 <template>
-  <div class="container slide-enter" v-if="frontmatter.footer !== false">
+  <div v-if="frontmatter.footer !== false" class="container slide-enter">
     <footer class="footer">
       <div class="footer__content">
-        <nav class="footer__navigation" v-for="item in theme.footer.navigation">
+        <nav v-for="item in theme.footer.navigation" :key="item.title" class="footer__navigation">
           <h3 class="footer__title">{{ item.title }}</h3>
           <ul class="footer__list">
-            <li v-for="ic in item.items" class="footer__item">
-              <Link :href="withBase(ic.link)" :title="ic.text + '（' + withBase(ic.link) + '）'" noIcon>
+            <li v-for="ic in item.items" :key="ic.text" class="footer__item">
+              <Link :href="withBase(ic.link)" :title="ic.text + '（' + withBase(ic.link) + '）'" no-icon>
                 {{ ic.text }}
               </Link>
             </li>
@@ -38,7 +38,7 @@ const qrcode = useQRCode(theme.value.footer.qrcodeLink);
         </div>
 
         <ul>
-          <li class="footer__social-item" v-for="item in socialList">
+          <li v-for="item in socialList" :key="item.link" class="footer__social-item">
             <a :href="item.link" :aria-label="item.title" :title="item.title" target="_blank" class="footer__social-link" rel="noopener noreferrer" v-html="item.icon"> </a>
           </li>
         </ul>

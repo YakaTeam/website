@@ -1,9 +1,9 @@
 import type { DefaultTheme, UserConfig } from "vitepress";
 import { ensureStartingSlash, normalizePath } from "../utils";
 import type { DocsPageData, SectionData } from "../plugins/section";
-import type { Theme } from "../types";
+import type { ThemeConfig } from "../types";
 
-function findRoot(localeConfig: Theme.Config, searchable: string, localeLink: string) {
+function findRoot(localeConfig: ThemeConfig, searchable: string, localeLink: string) {
   return localeConfig.nav.find((item) => {
     if (!("link" in item)) return false;
     const tmp = localeLink === "/" ? item.link.replace(/(^\/.*?\/).*$/, "$1") : item.link.replace(/(^\/.*?\/)(.*?\/).*$/, "$1$2");
@@ -20,7 +20,7 @@ export function findSidebarPath(pageData: DocsPageData, config: UserConfig): Def
   const locale = localeLinks.find((locale) => locale.link.startsWith(searchable.replace(/(^.*?\/).*$/, "$1"))) || localeLinks[0];
 
   searchable = ensureStartingSlash(searchable);
-  const localeConfig: Theme.Config = config.locales[locale.key].themeConfig;
+  const localeConfig: ThemeConfig = config.locales[locale.key].themeConfig;
   const root = findRoot(localeConfig, searchable, locale.link);
 
   const path: DefaultTheme.SidebarItem[] = [];
@@ -46,7 +46,7 @@ export function findSidebarPath(pageData: DocsPageData, config: UserConfig): Def
       return false;
     }
 
-    if (tree.hasOwnProperty("link") && ensureStartingSlash(tree.link) === searchable) {
+    if (Object.prototype.hasOwnProperty.call(tree, "link") && ensureStartingSlash(tree.link) === searchable) {
       return true;
     }
 

@@ -15,7 +15,7 @@ const downloadInformation = computed(() => ({
   },
 }));
 
-function handleAnalytics() {
+function handleAnalytics(type: "stable" | "nightly") {
   window.gtag?.("event", "Download", {
     event_category: "App",
     event_label: type === "stable" ? "Stable" : "Nightly",

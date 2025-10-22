@@ -72,11 +72,11 @@ function isInViewport(el: HTMLElement, offset: number) {
 </script>
 
 <template>
-  <aside v-if="hasSidebar" class="VPSidebar" :class="{ open }" ref="navEl" @click.stop>
+  <aside v-if="hasSidebar" ref="navEl" class="VPSidebar" :class="{ open }" @click.stop>
     <div class="curtain" />
 
-    <nav class="nav" id="VPSidebarNav" aria-labelledby="sidebar-aria-label" tabindex="-1">
-      <span class="visually-hidden" id="sidebar-aria-label"> Sidebar Navigation </span>
+    <nav id="VPSidebarNav" class="nav" aria-labelledby="sidebar-aria-label" tabindex="-1">
+      <span id="sidebar-aria-label" class="visually-hidden"> Sidebar Navigation </span>
 
       <slot name="sidebar-nav-before" />
 

@@ -1,6 +1,6 @@
 import { type Router, inBrowser, useData } from "vitepress";
 import { type App, watchEffect } from "vue";
-import { createZoom } from "./composables/zoom";
+import { createZoom } from "./composables/useZoom";
 import { enhanceAppWithTabs } from "vitepress-plugin-tabs/client";
 import initializeAnalytics from "./plugins/analytics";
 import DefaultTheme from "vitepress/theme-without-fonts";

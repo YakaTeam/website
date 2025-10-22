@@ -44,7 +44,7 @@ function addToNonExistent(user: string) {
   <div v-if="contributors.length > 0" class="contributors">
     <h3>Contributors</h3>
     <ul class="contributors__list">
-      <li class="contributor" v-for="contributor of contributors" :key="contributor">
+      <li v-for="contributor of contributors" :key="contributor" class="contributor">
         <a :href="`https://github.com/${contributor}`" target="_blank" :title="`${contributor} profile on GitHub`" :aria-label="`${contributor} profile on GitHub`">
           <img :src="`https://github.com/${contributor}.png?size=32`" :alt="`@${contributor} profile picture`" loading="lazy" class="contributor__avatar" @error="addToNonExistent(contributor)" />
         </a>

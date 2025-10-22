@@ -10,10 +10,13 @@ const { theme } = useData();
 const $t = createTranslate(theme.value.search?.options);
 
 const { backButton = true } = defineProps<{
-  modelValue: string;
   placeholder: string;
   backButton?: boolean;
 }>();
+
+const model = defineModel({ type: String, required: false });
+
+defineEmits<{ close: [] }>();
 
 /* Search input focus */
 
@@ -38,15 +41,15 @@ function onSearchBarClick(event: PointerEvent) {
 <template>
   <search>
     <form class="search-bar" @pointerup="onSearchBarClick($event)" @submit.prevent="">
-      <label :title="placeholder" id="localsearch-label" :for="id"> <MagnifyingGlass width="18px" height="18[x" />q </label>
+      <label id="localsearch-label" :title="placeholder" :for="id"> <MagnifyingGlass width="18px" height="18px" />q </label>
       <div v-if="backButton" class="search-actions before">
         <button class="back-button" :title="$t('modal.backButtonTitle')" @click="$emit('close')">
           <ArrowLeft width="18" height="18" />
         </button>
       </div>
-      <input ref="searchInput" :id :value="modelValue" :placeholder class="search-input" @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)" />
+      <input :id ref="searchInput" v-model="model" :placeholder class="search-input" />
       <div class="search-actions">
-        <button v-if="modelValue" class="clear-button" :title="$t('modal.resetButtonTitle')" @click="$emit('update:modelValue', '')">
+        <button v-if="modelValue" class="clear-button" :title="$t('modal.resetButtonTitle')" @click="model = ''">
           <X width="24" height="24" />
         </button>
       </div>

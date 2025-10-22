@@ -4,7 +4,7 @@ import { useData } from "vitepress";
 // @ts-expect-error Missing types
 import { useLangs } from "vitepress/dist/client/theme-default/composables/langs";
 
-import Button from "./Button.vue";
+import BaseButton from "./BaseButton.vue";
 
 const { site, theme } = useData();
 const { localeLinks } = useLangs({ removeCurrent: false });
@@ -36,7 +36,7 @@ onMounted(() => {
       </template>
     </blockquote>
     <div class="action">
-      <Button class="link" :href="root" theme="alt" :text="theme.notFound?.linkText ?? 'Back to main page'" />
+      <BaseButton class="link" :href="root" theme="alt" :text="theme.notFound?.linkText ?? 'Back to main page'" />
     </div>
   </div>
 </template>
