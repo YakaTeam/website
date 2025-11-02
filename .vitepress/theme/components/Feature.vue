@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import VPImage from "vitepress/dist/client/theme-default/components/VPImage.vue";
 import type { DefaultTheme } from "vitepress/theme";
+
+import VPImage from "vitepress/dist/client/theme-default/components/VPImage.vue";
 
 defineProps<{
   image: DefaultTheme.ThemeableImage;
@@ -13,7 +14,7 @@ defineProps<{
   <div class="Feature">
     <div class="box">
       <h1 v-if="title" class="title">
-        <span v-html="title" class="clip"></span>
+        <span class="clip" v-html="title"></span>
       </h1>
       <div v-if="details" class="details">
         <p v-html="details"></p>

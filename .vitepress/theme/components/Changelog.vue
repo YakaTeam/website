@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { computed } from "vue";
 import MarkdownIt from "markdown-it";
+import { computed } from "vue";
+
 import { type AppRelease, data as release } from "../data/release.data";
 
 const { type } = defineProps<{ type: keyof AppRelease }>();
@@ -22,7 +23,7 @@ const changelog = computed(() => {
     <header class="changelog__header">
       <h2 class="changelog__title">Changelog</h2>
     </header>
-    <article class="changelog__content" v-html="changelog" />
+    <article class="changelog__content" v-html="changelog"></article>
   </section>
   <footer class="full-changelog">
     <p>

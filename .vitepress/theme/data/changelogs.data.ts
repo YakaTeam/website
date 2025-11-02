@@ -1,11 +1,15 @@
-import { defineLoader } from "vitepress";
-import { Octokit } from "@octokit/rest";
 import type { GetResponseDataTypeFromEndpointMethod } from "@octokit/types";
+
+import { Octokit } from "@octokit/rest";
 import fs from "node:fs";
+import { join } from "node:path";
+import { defineLoader } from "vitepress";
+
+import { CACHE_DIR } from ".";
 
 const isDev = process.env.NODE_ENV === "development";
 
-const CACHE_PATH = "./changelogs.data.json";
+const CACHE_PATH = join(CACHE_DIR, "changelogs.data.json");
 
 const octokit = new Octokit();
 
@@ -30,6 +34,7 @@ export default defineLoader({
 
     if (isDev) {
       console.log("Creating changelogs cache");
+      fs.mkdirSync(CACHE_DIR, { recursive: true });
       fs.writeFileSync(CACHE_PATH, JSON.stringify(releases, null, 2), "utf-8");
     }
 

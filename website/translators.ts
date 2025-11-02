@@ -1,8 +1,9 @@
+import type { ThemeTeamMember } from "@/theme/types";
+
 import translators from "./translators.json";
-import type { Theme } from "@/theme/types";
 
 export interface Translator {
-  name: string | Record<string, string>;
+  name: Record<string, string> | string;
   github: string;
   avatar: string;
   website?: string;
@@ -21,7 +22,7 @@ for (const [key, value] of Object.entries(translators)) {
   };
 }
 
-export const coreMembers: Theme.TeamMember[] = [
+export const coreMembers: ThemeTeamMember[] = [
   {
     avatar: "https://github.com/Koitharu.png",
     name: {

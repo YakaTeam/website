@@ -1,22 +1,25 @@
-import type { Theme } from "../theme/types";
-import { defineConfigWithTheme } from "vitepress";
-import { config as root, searchLocale as searchLocaleEn } from "./en";
-import { addPlugins } from "../theme/plugins/markdown";
-import { sections, prepareData } from "../theme/plugins/section";
-import { slugify } from "transliteration";
-import { fileURLToPath, URL } from "node:url";
-import { telegram } from "../../website/icons";
-import { tabsMarkdownPlugin } from "vitepress-plugin-tabs";
+// @ts-expect-error Missing types
 import shortcode_plugin from "markdown-it-shortcode-tag";
-import shortcodes from "./shortcodes";
-import generateOgImages from "./hooks/generateOgImages";
+import { fileURLToPath, URL } from "node:url";
+import { slugify } from "transliteration";
+import { defineConfigWithTheme } from "vitepress";
+import { tabsMarkdownPlugin } from "vitepress-plugin-tabs";
+
+import type { ThemeConfig } from "../theme/types";
+
+import { telegram } from "../../website/icons";
+import { addPlugins } from "../theme/plugins/markdown";
+import { prepareData, sections } from "../theme/plugins/section";
+import { config as root, searchLocale as searchLocaleEn } from "./en";
 import generateMeta from "./hooks/generateMeta";
+import generateOgImages from "./hooks/generateOgImages";
+import shortcodes from "./shortcodes";
 
 const SITE_HOST = "https://kotatsu.app";
 const SITE_TITLE = "kotatsu.app";
 const SITE_TITLE_SEPARATOR = " / ";
 
-export default defineConfigWithTheme<Theme.Config>({
+export default defineConfigWithTheme<ThemeConfig>({
   lastUpdated: true,
   cleanUrls: true,
 
@@ -36,8 +39,8 @@ export default defineConfigWithTheme<Theme.Config>({
           .trim()
           .replace(/^\d*/g, "") // Удаление чисел из начала строки
           .replace(/[^a-zA-Zа-яА-ЯЁё0-9\-\s]/g, "") // Удаление ненужных символов
-          .replace(/\s\-\s/, "-")
-          .replace(/\-+/g, "-") // Избавление от повторяющихся символов
+          .replace(/\s-\s/, "-")
+          .replace(/-+/g, "-") // Избавление от повторяющихся символов
           .replace(/^(.{25}[^\s]*).*/, "$1"); // Ограничение количества символов
 
         return encodeURIComponent(slugify(str, { lowercase: true }));
@@ -102,7 +105,7 @@ export default defineConfigWithTheme<Theme.Config>({
   vite: {
     resolve: {
       alias: ["VPSidebar", "VPNavBarTranslations", "VPNavScreenTranslations", "VPNavBar", "VPNavBarMenu", "VPNavScreenMenu", "VPFooter"].map((componentName) => ({
-        find: new RegExp(`^.*\/${componentName}\.vue$`),
+        find: new RegExp(`^.*/${componentName}.vue$`),
         replacement: fileURLToPath(new URL(`../theme/components/${componentName.replace(/^VP/, "")}.vue`, import.meta.url)),
       })),
     },

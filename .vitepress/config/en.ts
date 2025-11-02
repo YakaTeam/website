@@ -1,5 +1,7 @@
 import type { DefaultTheme, LocaleConfig } from "vitepress";
-import type { CustomConfig, Theme } from "../theme/types";
+
+import type { CustomConfig, ThemeConfig } from "../theme/types";
+
 import { sections } from "../theme/plugins/section";
 import { resolveBaseUrl } from "../theme/utils";
 
@@ -31,7 +33,7 @@ export const searchLocale: Record<string, Partial<Omit<DefaultTheme.LocalSearchO
   },
 };
 
-export const config: LocaleConfig<Theme.Config> = {
+export const config: LocaleConfig<ThemeConfig> = {
   root: {
     label: "English",
     lang: "en",

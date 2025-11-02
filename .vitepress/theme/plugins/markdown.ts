@@ -1,9 +1,13 @@
 import type MarkdownIt from "markdown-it";
+// @ts-expect-error Missing types
 import type { RenderRule } from "markdown-it/lib/renderer";
+// @ts-expect-error Missing types
 import type StateBlock from "markdown-it/lib/rules_block/state_block";
-import { isSpace } from "markdown-it/lib/common/utils";
+
 import container from "markdown-it-container";
 import kbd from "markdown-it-kbd";
+// @ts-expect-error Missing types
+import { isSpace } from "markdown-it/lib/common/utils";
 
 export const addPlugins = (md: MarkdownIt) => {
   md.use(...createContainer("info", "Information", md))
@@ -44,8 +48,10 @@ function createContainer(klass: string, defaultTitle: string, md: MarkdownIt): C
 // from https://github.com/markdown-it/markdown-it/blob/2b6cac25823af011ff3bc7628bc9b06e483c5a08/lib/rules_block/table.js
 // GFM table, non-standard
 
-function table(state: StateBlock, startLine: number, endLine: number, silent: any) {
-  var ch, lineText, pos, i, l, nextLine, headers, columns, columnCount, token, aligns, t, tableLines, tbodyLines, oldParentType, terminate, terminatorRules, firstCh, secondCh;
+/* eslint-disable prefer-const */
+function table(state: StateBlock, startLine: number, endLine: number, silent: boolean) {
+  // eslint-disable-next-line perfectionist/sort-variable-declarations
+  let ch, lineText, pos, i, l, nextLine, headers, columns, columnCount, token, aligns, t, tableLines, tbodyLines, oldParentType, terminate, terminatorRules, firstCh, secondCh;
 
   // should have at least two lines
   if (startLine + 2 > endLine) return false;
@@ -127,7 +133,6 @@ function table(state: StateBlock, startLine: number, endLine: number, silent: an
   if (silent) return true;
 
   oldParentType = state.parentType;
-  // @ts-expect-error
   state.parentType = "table";
 
   // use 'blockquote' lists for termination because it's
@@ -229,13 +234,13 @@ function getLine(state: StateBlock, line: number): string {
 }
 
 function escapedSplit(str: string): string[] {
-  var result = [],
-    pos = 0,
-    max = str.length,
-    ch,
+  const result = [];
+  const max = str.length;
+  let ch,
+    current = "",
     isEscaped = false,
     lastPos = 0,
-    current = "";
+    pos = 0;
 
   ch = str.charCodeAt(pos);
 
