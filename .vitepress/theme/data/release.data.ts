@@ -33,12 +33,12 @@ export default defineLoader({
 
     const [stable, nightly] = await Promise.all([
       octokit.repos.getLatestRelease({
-        owner: "KotatsuApp",
-        repo: "Kotatsu",
+        owner: "YakaTeam",
+        repo: "artifacts",
       }),
       octokit.repos.getLatestRelease({
-        owner: "KotatsuApp",
-        repo: "Kotatsu-nightly",
+        owner: "YakaTeam",
+        repo: "artifacts",
       }),
     ]);
 
