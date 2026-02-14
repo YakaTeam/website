@@ -14,6 +14,6 @@ import ChangelogsList from "@theme/components/ChangelogsList.vue";
 
 # Changelogs
 
-Changelogs of all Kotatsu stable releases, which are also available [on GitHub](https://github.com/KotatsuApp/Kotatsu/releases).
+Changelogs of all Yukimi releases, which are also available [on GitHub](https://github.com/YakaTeam/artifacts/releases).
 
 <ChangelogsList />

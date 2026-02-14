@@ -1,11 +1,11 @@
 ---
-title: Kotatsu
+title: Yukimi
 layout: home
 
 main:
-  title: Kotatsu
-  text: Manga in your pocket
-  tagline: A simple and convenient <a class="link" href="https://hosted.weblate.org/engage/kotatsu/">mulitlingual</a> open source manga reader for Android from and for the community, where you can find and read your favorite manga easier than ever.
+  title: Yukimi
+  text: Manga in your pocket!
+  tagline: A simple and convenient <a class="link" href="https://hosted.weblate.org/engage/yukimi/">mulitlingual</a> open source manga reader for Android from and for the community, where you can find and read your favorite manga easier than ever.
   image:
     alt: Kotatsu Logo
     light: /logo-compact.svg

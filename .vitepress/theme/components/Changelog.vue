@@ -10,8 +10,11 @@ const md = new MarkdownIt();
 
 const changelog = computed(() => {
   const flavoredString = (release[type].body ?? "")
+    .replace(/Automated Yukimi artifact, generated on \d{4}\/\d{2}\/\d{2}/g, '')
+    .replace("What's Changed", "")
+    .replace(/@([a-zA-Z0-9-]+)/g, '[@$1](https://github.com/$1)')
     .replace(/(?<=\(|(, ))@(.*?)(?=\)|(, ))/g, "[@$2](https://github.com/$2)")
-    .replace("https://github.com/KotatsuApp/Kotatsu/releases", "/changelogs/")
+    .replace("https://github.com/YakaTeam/artifacts/releases", "/changelogs/")
     .replace(/## [ \t]*([^\n\r]*)/g, "### $1");
 
   return md.render(flavoredString);
@@ -28,7 +31,7 @@ const changelog = computed(() => {
   <footer class="full-changelog">
     <p>
       View the full release
-      <a class="full-changelog__link" href="https://github.com/KotatsuApp/Kotatsu/releases/latest" target="_blank" rel="noopener"> here </a>
+      <a class="full-changelog__link" href="https://github.com/YakaTeam/artifacts/releases/latest" target="_blank" rel="noopener"> here </a>
     </p>
   </footer>
 </template>

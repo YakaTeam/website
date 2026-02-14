@@ -37,7 +37,7 @@
     "markdown-it-kbd": "^3.0.0",
     "markdown-it-shortcode-tag": "1.1.0",
     "markdownlint": "^0.39.0",
-    "markdownlint-cli": "^0.45.0",
+    "markdownlint-cli": "^0.47.0",
     "postcss-nesting": "^13.0.2",
     "prettier": "^3.6.2",
     "tinyglobby": "^0.2.15",

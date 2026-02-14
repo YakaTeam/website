@@ -204,7 +204,7 @@ function defaultSidebar(): DefaultTheme.SidebarItem[] {
 function getNav(): DefaultTheme.NavItem[] {
   return [
     {
-      text: "Get v{app_version}",
+      text: "Get {app_version}",
       activeMatch: "^/*?(download|changelogs)/*?$",
       items: [
         {

@@ -27,8 +27,8 @@ export default defineLoader({
     }
 
     const releases = await octokit.paginate(octokit.repos.listReleases, {
-      owner: "KotatsuApp",
-      repo: "Kotatsu",
+      owner: "YakaTeam",
+      repo: "artifacts",
       per_page: 100,
     });
 

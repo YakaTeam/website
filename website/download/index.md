@@ -16,9 +16,7 @@ import Changelog from "@theme/components/Changelog.vue";
 
 # Download
 
-The latest stable version of **Kotatsu** was released **<ReleaseDate type="stable" />** and the latest nightly version was released **<ReleaseDate type="nightly" />**.
-
-Nightly releases are intended for testing upcoming changes and may not be a stable experience.
+The latest build of **Yukimi** was released **<ReleaseDate type="stable" />**. Its codename is **Nightly**.
 
 <DownloadButtons />
 

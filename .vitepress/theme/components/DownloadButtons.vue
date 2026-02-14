@@ -6,21 +6,17 @@ import { computed } from "vue";
 import { data as release } from "../data/release.data";
 
 const downloadInformation = computed(() => ({
-  stable: {
-    tagName: release.stable.tag_name ?? "v0.0.0",
-    asset: (release.stable.assets ?? []).find((a) => /^kotatsu-(\d+\.)?(\d+\.)?(\*|\d+)-release.apk/.test(a.name)),
-  },
   nightly: {
     tagName: release.nightly.tag_name ?? "00000000",
     asset: (release.nightly.assets ?? []).find((a) => /^release.apk/.test(a.name)),
   },
 }));
 
-function handleAnalytics(type: "nightly" | "stable") {
+function handleAnalytics(type: "stable") {
   window.gtag?.("event", "Download", {
     event_category: "App",
-    event_label: type === "stable" ? "Stable" : "Nightly",
-    version: type === "stable" ? release.stable.tag_name : release.nightly.tag_name,
+    event_label: type === "Nightly",
+    version: type === release.nightly.tag_name,
   });
 }
 </script>
@@ -28,10 +24,6 @@ function handleAnalytics(type: "nightly" | "stable") {
 <template>
   <div>
     <div class="download-buttons">
-      <a class="download-button primary" :download="downloadInformation.stable.asset?.name" :href="downloadInformation.stable.asset?.browser_download_url" @click="handleAnalytics('stable')">
-        <span class="text">Stable</span>
-        <span class="version">{{ downloadInformation.stable.tagName }}</span>
-      </a>
       <a class="download-button secondary" :download="downloadInformation.nightly.asset?.name" :href="downloadInformation.nightly.asset?.browser_download_url" @click="handleAnalytics('nightly')">
         <span class="text">Nightly</span>
         <span class="version">{{ downloadInformation.nightly.tagName.replace("nightly-", "") }}</span>

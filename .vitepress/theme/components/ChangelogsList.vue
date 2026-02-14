@@ -10,9 +10,9 @@ function renderMarkdown(string: null | string | undefined) {
   const flavoredString = body
     .split(/---\r\n\r\n### Checksums|---\r\n\r\nMD5/)[0]
     .replace(/(?<=\(|(, ))@(.*?)(?=\)|(, ))/g, "[@$2](https://github.com/$2)")
-    .replace(/#(\d+)/g, "[#$1](https://github.com/KotatsuApp/Kotatsu/issues/$1)")
+    .replace(/#(\d+)/g, "[#$1](https://github.com/YakaTeam/issues/issues/$1)")
     .replace(/^Check out the .*past release notes.* if you're.*$/m, "")
-    .replace(/https:\/\/github.com\/KotatsuApp\/Kotatsu\/releases\/tag\/(.*?)/g, "#$1")
+    .replace(/https:\/\/github.com\/YakaTeam\/artifacts\/releases\/tag\/(.*?)/g, "#$1")
     .replace(/## [ \t]*([^\n\r]*)/g, "### $1")
     .trim();
 
@@ -27,8 +27,22 @@ const dateFormatter = new Intl.DateTimeFormat("en", {
 <template>
   <div v-for="(release, index) of changelogs" :key="release.id" class="release">
     <h2 :id="index === 0 ? 'latest' : release.tag_name" class="release__title">
-      <a :href="release.html_url" target="_blank">
-        {{ release.tag_name.replace("v", "") }}
+      <a :href="release.html_url" target="_blank" class="no-underline">
+        {{
+          (() => {
+            const raw = release.tag_name.replace("nightly-", "")
+            const year = raw.slice(0, 4)
+            const month = raw.slice(4, 6)
+            const day = raw.slice(6, 8)
+
+            const date = new Date(`${year}-${month}-${day}`)
+            return date.toLocaleDateString("en-US", {
+              month: "long",
+              day: "2-digit",
+              year: "numeric"
+            })
+          })()
+        }}
       </a>
       <Badge v-if="index === 0" type="tip" text="Latest" />
       <Badge v-if="release.tag_name.includes('a')" type="danger" text="Unstable" />
@@ -36,10 +50,12 @@ const dateFormatter = new Intl.DateTimeFormat("en", {
       <Badge v-if="release.tag_name.includes('rc')" type="warning" text="Unstable" />
       <a class="header-anchor" :href="index === 0 ? '#latest' : `#${release.tag_name}`" :aria-label="`Permalink to &quot;${release.tag_name}&quot;`" />
     </h2>
-    <time class="release__date" :datetime="release.published_at">
-      {{ dateFormatter.format(new Date(release.published_at)) }}
-    </time>
-    <div v-html="renderMarkdown(release.body)" />
+    <div v-html="renderMarkdown(
+      release.body
+        .replace(/Automated Yukimi artifact, generated on \d{4}\/\d{2}\/\d{2}/g, '')
+        .replace(/@([a-zA-Z0-9-]+)/g, '[@$1](https://github.com/$1)')
+        .replace(/What's Changed/g, '')
+    )"/>
   </div>
 </template>
 
@@ -55,6 +71,10 @@ const dateFormatter = new Intl.DateTimeFormat("en", {
   .release__date {
     font-size: 0.875rem;
     color: var(--vp-c-text-2);
+  }
+
+  .no-underline {
+    text-decoration: none;
   }
 }
 </style>
