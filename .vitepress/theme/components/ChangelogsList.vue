@@ -55,6 +55,7 @@ const dateFormatter = new Intl.DateTimeFormat("en", {
         .replace(/Automated Yukimi artifact, generated on \d{4}\/\d{2}\/\d{2}/g, '')
         .replace(/@([a-zA-Z0-9-]+)/g, '[@$1](https://github.com/$1)')
         .replace(/What's Changed/g, '')
+        .replace(/Parsers Updates:/g, '')
     )"/>
   </div>
 </template>

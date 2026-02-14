@@ -11,7 +11,8 @@ const md = new MarkdownIt();
 const changelog = computed(() => {
   const flavoredString = (release[type].body ?? "")
     .replace(/Automated Yukimi artifact, generated on \d{4}\/\d{2}\/\d{2}/g, '')
-    .replace("What's Changed", "")
+    .replace(/What's Changed/g, '')
+    .replace(/Parsers Updates:/g, '')
     .replace(/@([a-zA-Z0-9-]+)/g, '[@$1](https://github.com/$1)')
     .replace(/(?<=\(|(, ))@(.*?)(?=\)|(, ))/g, "[@$2](https://github.com/$2)")
     .replace("https://github.com/YakaTeam/artifacts/releases", "/changelogs/")
